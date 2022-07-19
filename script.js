@@ -1,6 +1,8 @@
 const dino = document.querySelector('.dino');
 const background = document.querySelector('.background');
 const pointsHTML = document.querySelector(".points")
+const deathsHTML = document.querySelector(".deaths")
+
 let position = 0;
 
 // pontos do player e quantos mortes, que só vai parar de salvar quando 
@@ -33,7 +35,8 @@ function jump() {
                 if (position <= 0) {
                     clearInterval(downInterval);
                     points+=1;
-                    console.log(points)
+                    pointsHTML.innerHTML = "<h1>Points: " + points + "</h1>"
+                    // console.log(points)
                     isJumping = false;
                 } else {
                     position -= 20;
@@ -71,6 +74,8 @@ function createCactus() {
             clearInterval(leftInterval);
             document.body.innerHTML = '<h1 class="game-over">Fim de jogo!</h1>';
             deaths += 1;
+            deathsHTML.innerHTML = "<h1>Deaths: " + points + "</h1>"
+            // por enquanto vou deixar com essa gambiarra.
         } else {
             cactusPosition -= 10;
             cactus.style.left = cactusPosition + 'px';
@@ -84,6 +89,7 @@ function createCactus() {
 createCactus();
 
 pointsHTML.innerHTML = "<h1>Points: " + points + "</h1>"
+deathsHTML.innerHTML = "<h1>Deaths: " + points + "</h1>"
 
 document.addEventListener('keyup', handleKeyUp);
 
